@@ -4,7 +4,7 @@ resource "aws_instance" "prometheus" {
   key_name = "jenkins"
   vpc_security_group_ids = [ aws_security_group.prometheus.id ]
   provisioner "local-exec" {
-      command = "sleep 60 && sudo ansible-playbook -i ${self.public_ip}, playbooks/promethus.yml  -u=ubuntu --key-file /home/sahar/Downloads/jenkins.pem"
+      command = "sleep 60 && ansible-playbook -i ${self.public_ip}, playbooks/promethus.yml  -u=ubuntu --key-file /home/sahar/Downloads/jenkins.pem"
   }
   tags = {
     Name = "Prometheus"
@@ -17,7 +17,7 @@ resource "aws_instance" "grafana" {
   key_name = "jenkins"
   vpc_security_group_ids = [ aws_security_group.grafana.id ]
   provisioner "local-exec" {
-    command = "sleep 60 && sudo ansible-playbook -i ${self.public_ip}, playbooks/grafana.yml -u=ubuntu --key-file /home/sahar/Downloads/jenkins.pem"
+    command = "sleep 60 && ansible-playbook -i ${self.public_ip}, playbooks/grafana.yml -u=ubuntu --key-file /home/sahar/Downloads/jenkins.pem"
   }
   tags = {
     Name = "Grafana"
@@ -33,7 +33,7 @@ resource "aws_security_group" "prometheus" {
       from_port   = ingress.value
       to_port     = ingress.value
       protocol    = "tcp"
-      cidr_blocks = ["46.121.44.137/32"] #My public ip
+      cidr_blocks = ["46.121.44.252/32"] #My public ip
     }
   }
   egress {
@@ -54,7 +54,7 @@ resource "aws_security_group" "grafana" {
       from_port   = ingress.value
       to_port     = ingress.value
       protocol    = "tcp"
-      cidr_blocks = ["46.121.44.137/32"]  #My public ip
+      cidr_blocks = ["46.121.44.252/32"]  #My public ip
     }
   }
   egress {
