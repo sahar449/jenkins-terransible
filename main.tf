@@ -1,7 +1,3 @@
-resource "random" "sg_suffix" {
-  dec = 4
-}
-
 resource "aws_instance" "prometheus" {
   ami = "ami-0fc5d935ebf8bc3bc"
   instance_type = "t2.micro"
@@ -29,7 +25,7 @@ resource "aws_instance" "grafana" {
 }
 
 resource "aws_security_group" "prometheus" {
-  name        = "sg_prometheus_${random.sg_suffix.id}"
+  name        = "sg_prometheus"
   dynamic "ingress" {
     for_each = [22, 9090]
     content {
@@ -50,7 +46,7 @@ resource "aws_security_group" "prometheus" {
 }
 
 resource "aws_security_group" "grafana" {
-  name        = "sg_grafana_${random.sg_suffix.id}"
+  name        = "sg_grafana"
   dynamic "ingress" {
     for_each = [22, 3000]
     content {
