@@ -6,6 +6,9 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
+    public_ip{
+      source = "/hashicorp/publicip"
+    }
   }
 }
 # Provider Block
