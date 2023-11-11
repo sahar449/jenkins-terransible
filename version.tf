@@ -6,12 +6,10 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
-    publicip{
-      source = "/hashicorp/publicip"
-    }
   }
 }
 # Provider Block
 provider "aws" {
   region = "us-east-1"
 }
+
