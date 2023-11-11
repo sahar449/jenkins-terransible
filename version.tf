@@ -6,7 +6,7 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
-    public_ip{
+    publicip{
       source = "/hashicorp/publicip"
     }
   }
