@@ -6,9 +6,6 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
-   publicip {
-    provider_url = "https://ifconfig.co/"
-    }
   }
 }
 # Provider Block
