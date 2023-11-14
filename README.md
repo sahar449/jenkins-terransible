@@ -18,8 +18,6 @@ Ansible install automatically Promethus and Grafana in debian distro (Ubuntu and
 
 Jenkinsfile run the pipeline, please add to your jenkins server access and secret of aws.
 
-![Jenkins Pipeline](images/jenkins_pipeline.png)
-
 ## Monitoring Infrastructure
 
 In the end of the pipeline, you will get Monitoring Infrastructure.
