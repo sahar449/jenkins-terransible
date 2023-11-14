@@ -1,7 +1,7 @@
 module "Monitoring" {
   source = "./tf_module"
   access_key = ""
-  secret_key = "" 
+  secret_key = ""
 }
 
 #Provider Block
