@@ -4,3 +4,11 @@ module "Monitoring" {
   access_key = ""
   secret_key = "" 
 }
+
+terraform {
+  backend "s3" {
+    bucket = "sahar-tf"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+  }
+}
