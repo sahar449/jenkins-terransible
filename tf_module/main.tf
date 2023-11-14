@@ -14,7 +14,7 @@ resource "aws_instance" "prometheus" {
       command = "sleep 60 && sudo ansible-playbook -i ${self.public_ip}, playbooks/promethus.yml  -u=ubuntu --key-file /home/sahar/Downloads/jenkins.pem"
   }
   tags = {
-    Name = "Prometheus-${random_integer.random.id}"
+    Name = "Prometheus"
   }
 }
 
@@ -27,12 +27,12 @@ resource "aws_instance" "grafana" {
     command = "sleep 60 && sudo ansible-playbook -i ${self.public_ip}, playbooks/grafana.yml -u=ubuntu --key-file /home/sahar/Downloads/jenkins.pem"
   }
   tags = {
-    Name = "Grafana-${random_integer.random.id}"
+    Name = "Grafana"
   }
 }
 
 resource "aws_security_group" "prometheus" {
-  name        = "sg_prometheus"
+  name        = "sg_prometheus_${random_integer.random.id}"
   dynamic "ingress" {
     for_each = [22, 9090]
     content {
@@ -53,7 +53,7 @@ resource "aws_security_group" "prometheus" {
 }
 
 resource "aws_security_group" "grafana" {
-  name        = "sg_grafana"
+  name        = "sg_grafana_${random_integer.random.id}"
   dynamic "ingress" {
     for_each = [22, 3000]
     content {
