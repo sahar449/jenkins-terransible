@@ -1,5 +1,6 @@
 module "Monitoring" {
   source = "./tf_module"
+  profile = "default"
   region = ""
   access_key = ""
   secret_key = "" 
