@@ -1,5 +1,10 @@
 #--- tf_module ---#
 
+resource "random_integer" "random" {
+  min = 1
+  max = 100
+}
+
 resource "aws_instance" "prometheus" {
   ami = "ami-0fc5d935ebf8bc3bc"
   instance_type = "t2.micro"
@@ -27,7 +32,7 @@ resource "aws_instance" "grafana" {
 }
 
 resource "aws_security_group" "prometheus" {
-  name        = "sg_prometheus"
+  name        = "sg_prometheus_${random_integer.random.id}"
   dynamic "ingress" {
     for_each = [22, 9090]
     content {
@@ -35,7 +40,7 @@ resource "aws_security_group" "prometheus" {
       from_port   = ingress.value
       to_port     = ingress.value
       protocol    = "tcp"
-      cidr_blocks = ["46.121.44.252/32"]  #My public ip
+      cidr_blocks = ["46.121.44.252/32"]  
     }
   }
   egress {
@@ -48,7 +53,7 @@ resource "aws_security_group" "prometheus" {
 }
 
 resource "aws_security_group" "grafana" {
-  name        = "sg_grafana"
+  name        = "sg_grafana_${random_integer.random.id}"
   dynamic "ingress" {
     for_each = [22, 3000]
     content {
@@ -56,7 +61,7 @@ resource "aws_security_group" "grafana" {
       from_port   = ingress.value
       to_port     = ingress.value
       protocol    = "tcp"
-      cidr_blocks = ["46.121.44.252/32"]  #My public ip
+      cidr_blocks = ["46.121.44.252/32"] 
     }
   }
   egress {
