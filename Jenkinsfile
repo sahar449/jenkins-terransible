@@ -32,7 +32,9 @@ pipeline{
             sh "terraform ${params.apply_or_destroy} -auto-approve"
         }
       }
+    }  
   }
+
 
   post {
     failure {
@@ -44,5 +46,4 @@ pipeline{
           }
         }
     }
-}
 }
