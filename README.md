@@ -34,7 +34,7 @@ In the end of the pipeline, you will get Monitoring Infrastructure.
 
 - `/tf_module`: Terraform configuration files for infrastructure provisioning.
 - `/playbooks`: Ansible playbooks and roles for configuring the infrastructure.
-- `/Jenkinsfile`: Jenkins pipeline scripts for orchestration.
+- `Jenkinsfile`: Jenkins pipeline scripts for orchestration.
 
 ## Getting Started
 
