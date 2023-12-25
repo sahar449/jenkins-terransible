@@ -38,9 +38,12 @@ pipeline{
         steps{
           script{
             if (params.apply_or_destroy == 'destroy'){
-              sh """
-                sudo python3 delete_state_file.py
-              """
+              withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', 
+              accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+              credentialsId: 'aws_creds', 
+              secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                sh "python3 delete_state_file.py"
+            }
           } 
         }
       }
