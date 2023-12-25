@@ -40,7 +40,7 @@ resource "aws_security_group" "prometheus" {
       from_port   = ingress.value
       to_port     = ingress.value
       protocol    = "tcp"
-      cidr_blocks = ["46.121.44.252/32"]  
+      cidr_blocks = ["46.121.45.120/32"]  
     }
   }
   egress {
@@ -61,7 +61,7 @@ resource "aws_security_group" "grafana" {
       from_port   = ingress.value
       to_port     = ingress.value
       protocol    = "tcp"
-      cidr_blocks = ["46.121.44.252/32"] 
+      cidr_blocks = ["46.121.45.120/32"] 
     }
   }
   egress {
