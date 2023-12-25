@@ -35,11 +35,11 @@ pipeline{
     }
 
     stage('delete state file'){
-      if (params.apply_or_destroy == 'destroy'){
         steps{
           script{
+            if (params.apply_or_destroy == 'destroy'){
               sh "python delete_state_file.py"
-          }
+          } 
         }
       }
     }  
