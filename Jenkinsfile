@@ -32,6 +32,14 @@ pipeline{
             sh "terraform ${params.apply_or_destroy} -auto-approve"
         }
       }
+    }
+
+    stage('delete state file'){
+      if(params.apply_or_destroy == 'destroy'){
+        steps{
+          sh "python delete_state_file.py"
+        }
+      }
     }  
   }
 
