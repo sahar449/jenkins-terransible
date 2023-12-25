@@ -38,7 +38,9 @@ pipeline{
         steps{
           script{
             if (params.apply_or_destroy == 'destroy'){
-              sh "python3 delete_state_file.py"
+              sh """
+                sudo python3 delete_state_file.py
+              """
           } 
         }
       }
