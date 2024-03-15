@@ -3,6 +3,6 @@ data "aws_ami" "latest_ubuntu" {
     owners = [ "amazon" ]
     filter {
     name   = "name"
-    values = ["ubuntu/images-*"]
+    values = ["images/hvm-ssd/ubuntu-*"]
   }
 }
