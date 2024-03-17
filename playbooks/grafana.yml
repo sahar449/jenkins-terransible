@@ -7,10 +7,12 @@
     - name: update repo
       apt:
         update_cache: true
+        name: gnupg
+        state: present
 
     - name: download apt key
       ansible.builtin.apt_key:
-        url: https://apt.grafana.com/gpg.key
+        url: https://packages.grafana.com/gpg.key
         state: present
 
     - name: Add Grafana repo to sources.list
