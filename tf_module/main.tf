@@ -6,7 +6,7 @@ resource "random_integer" "random" {
 }
 
 resource "aws_instance" "prometheus" {
-  ami = data.aws_ami.latest_ubuntu.id
+  ami = "ami-080e1f13689e07408"
   instance_type = "t2.micro"
   key_name = "jenkins"
   vpc_security_group_ids = [ aws_security_group.prometheus.id ]
@@ -20,7 +20,7 @@ resource "aws_instance" "prometheus" {
 
 resource "aws_instance" "grafana" {
   ami = data.aws_ami.latest_ubuntu.id
-  instance_type = "t2.micro"
+  instance_type = "ami-080e1f13689e07408"
   key_name = "jenkins"
   vpc_security_group_ids = [ aws_security_group.grafana.id ]
   provisioner "local-exec" {
