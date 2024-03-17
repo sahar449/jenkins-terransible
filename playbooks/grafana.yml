@@ -4,11 +4,17 @@
   become: true
   tasks:
 
-    - name: update repo
+    - name: update repo and install gnupg
       apt:
         update_cache: true
         name: gnupg
         state: present
+
+    - name: Update repository cache with disabled SSL certificate verification
+      apt:
+        update_cache: yes
+        validate_certs: no
+
 
     - name: download apt key
       ansible.builtin.apt_key:
