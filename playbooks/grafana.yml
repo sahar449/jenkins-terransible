@@ -11,7 +11,7 @@
       state: present
   - name: download apt key
     ansible.builtin.apt_key:
-      url: https://packages.grafana.com/gpg.key
+      url: https://apt.grafana.com/gpg.key
       state: present
   - name: Add Grafana repo to sources.list
     ansible.builtin.apt_repository:
