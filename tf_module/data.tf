@@ -1,8 +1,8 @@
 data "aws_ami" "latest_ubuntu" {
     most_recent = true
-    owners = [ "aws-marketplace" ]
+    owners = [ "amazon" ]
     filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-*"]
+    values = ["Ubuntu, 22.04 LTS-*"]
   }
 }

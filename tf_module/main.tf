@@ -6,7 +6,7 @@ resource "random_integer" "random" {
 }
 
 resource "aws_instance" "prometheus" {
-  ami = "ami-0d7a109bf30624c99"
+  ami = data.aws_ami.latest_ubuntu.id
   instance_type = "t2.micro"
   key_name = "jenkins"
   vpc_security_group_ids = [ aws_security_group.prometheus.id ]
@@ -19,7 +19,7 @@ resource "aws_instance" "prometheus" {
 }
 
 resource "aws_instance" "grafana" {
-  ami = "ami-0d7a109bf30624c99"
+  ami = data.aws_ami.latest_ubuntu.id
   instance_type = "t2.micro"
   key_name = "jenkins"
   vpc_security_group_ids = [ aws_security_group.grafana.id ]
