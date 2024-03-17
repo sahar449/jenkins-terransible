@@ -10,22 +10,16 @@
         name: gnupg
         state: present
 
-    - name: Update repository cache with disabled SSL certificate verification
-      apt:
-        update_cache: yes
-        validate_certs: no
+    # - name: download apt key
+    #   ansible.builtin.apt_key:
+    #     url: https://apt.grafana.com/gpg.key
+    #     state: present
 
-
-    - name: download apt key
-      ansible.builtin.apt_key:
-        url: https://apt.grafana.com/gpg.key
-        state: present
-
-    - name: Add Grafana repo to sources.list
-      ansible.builtin.apt_repository:
-        repo: deb https://packages.grafana.com/oss/deb stable main
-        filename: grafana
-        state: present
+    # - name: Add Grafana repo to sources.list
+    #   ansible.builtin.apt_repository:
+    #     repo: deb https://packages.grafana.com/oss/deb stable main
+    #     filename: grafana
+    #     state: present
     
     - name: Installtion
       ansible.builtin.apt:
