@@ -11,16 +11,6 @@ pipeline{
     }
     
     stages{
-    
-    stage('get public ip and inject to sg in tf'){
-      steps{
-        script{
-                def ip = sh(script: 'curl -s ipinfo.io/ip', returnStdout: true).trim()
-                env.IP_ADDRESS = ip
-                sh "sed -i 's/\"cidr_blocks\" = \\[\".*\\/32\"\\]/\"cidr_blocks\" = [\"${env.IP_ADDRESS}\\/32\"]/g' tf_module/main.tf"
-              }
-            }
-          }
 
     stage('tf init'){
         steps {
