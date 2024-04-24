@@ -17,7 +17,7 @@ pipeline{
         script{
                 def ip = sh(script: 'curl -s ipinfo.io/ip', returnStdout: true).trim()
                 env.IP_ADDRESS = ip
-                sh "sed 's|46.121.45.204|${env.IP_ADDRESS}|g' tf_module/main.tf"
+                sh "sed -i 's/\"cidr_blocks\" = \\[\".*\\/32\"\\]/\"cidr_blocks\" = [\"${env.IP_ADDRESS}\\/32\"]/g' tf_module/main.tf"
               }
             }
           }
